@@ -78,6 +78,7 @@ public class LevelConstructorManager : MonoBehaviour {
 	}
 
 	string [] SplitByLines(string text) {
+		Debug.Log (text);
 		return text.Split(new string[] { System.Environment.NewLine }, System.StringSplitOptions.None);
 	}
 
