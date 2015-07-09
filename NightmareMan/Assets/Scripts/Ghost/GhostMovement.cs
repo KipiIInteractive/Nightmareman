@@ -18,7 +18,8 @@ public class GhostMovement : MonoBehaviour
 	{
 		switch (playerMoveState) {
 		case MovementStates.Chase:
-			navigation.SetDestination (nightmareMan.position);
+			// TODO must pick random chase point
+			//navigation.SetDestination (nightmareMan.position);
 			break;
 		case MovementStates.Scatter: 
 			navigation.SetDestination (scatterPoint.position);

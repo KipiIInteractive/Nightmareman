@@ -12,6 +12,7 @@ public class LevelConstructorManager : MonoBehaviour {
 	public GameObject teleportEnter;
 	public GameObject teleportExit;
 	public GameObject enemyFollowDots;
+	public GameObject PlayerFood;
 
 	void Start() {
 		int[,] bitmap = ParseLevelTextAsset(fileLevel);
@@ -42,6 +43,9 @@ public class LevelConstructorManager : MonoBehaviour {
 			currentPosition.z = startingZ;
 			for (int k = 0; k < cols; k++) {
 				switch (bitmap [i, k]) {
+				case 0:
+					CreateBlock (currentPosition, generatedEnvironment, PlayerFood);
+					break;
 				case 1: // wall
 					CreateBlock (currentPosition, generatedEnvironment, wall);
 					break;
