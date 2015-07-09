@@ -1,17 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpawnPelletManager : MonoBehaviour {
+public class SpawnPelletManager : SingletonManager<SpawnPelletManager> {
 	
 	public Transform spawnPoint;
-	public static SpawnPelletManager Instance;
-	
-	void Start() {
-		if (Instance != null) {
-			Destroy(gameObject);
-		} else {
-			Instance = this;
-		}
-	}
+
 }
 

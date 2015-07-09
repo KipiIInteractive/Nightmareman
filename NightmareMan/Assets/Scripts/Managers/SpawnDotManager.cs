@@ -1,17 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpawnDotManager : MonoBehaviour {
+public class SpawnDotManager : SingletonManager<SpawnDotManager> {
 	
 	public Transform spawnPoint;
-	public static SpawnDotManager Instance;
-	
-	void Start() {
-		if (Instance != null) {
-			Destroy(gameObject);
-		} else {
-			Instance = this;
-		}
-	}
+
 }
 

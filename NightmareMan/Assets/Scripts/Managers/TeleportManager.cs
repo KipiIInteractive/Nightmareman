@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class TeleportManager : MonoBehaviour {
+	// Not a singleton manager, not a manager
 	public Transform otherTeleportPoint;
 
 	Rigidbody NightmareManRigid;
