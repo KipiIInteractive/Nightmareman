@@ -2,7 +2,10 @@
 
 public class GhostMovement : MonoBehaviour
 {
+	public enum MovementStates { Chase, Run, RandomMove };
 	public Transform nightmareMan;
+	public MovementStates playerMoveState = MovementStates.Chase;
+
 	NavMeshAgent navigation;
 	
 	void Awake ()
@@ -12,6 +15,14 @@ public class GhostMovement : MonoBehaviour
 	
 	void Update ()
 	{
-		navigation.SetDestination (nightmareMan.position);
+		switch (playerMoveState) {
+		case MovementStates.Chase:
+			navigation.SetDestination (nightmareMan.position);
+			break;
+		case MovementStates.Run: 
+			break;
+		case MovementStates.RandomMove:
+			break;
+		}
 	}
 }

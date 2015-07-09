@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 471126}
   - 95: {fileID: 9527828}
   - 54: {fileID: 5445168}
-  - 136: {fileID: 13659998}
   - 135: {fileID: 13588168}
   - 195: {fileID: 19525334}
   - 114: {fileID: 11449130}
@@ -43,8 +42,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188232}
-  m_LocalRotation: {x: 0, y: 0, z: -.707106829, w: .707106829}
-  m_LocalPosition: {x: -.119999997, y: 0, z: -.439999998}
+  m_LocalRotation: {x: .70710659, y: -.707106948, z: -1.1520229e-07, w: 1.15202347e-07}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 471126}
@@ -56,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.51200008, y: 0, z: .920000076}
+  m_LocalPosition: {x: -2.00999999, y: 0, z: 3.8900001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 430190}
@@ -86,7 +85,7 @@ Animator:
   m_GameObject: {fileID: 186786}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: be66986effd141b4992d2d78be127139, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 020a94ea3d4f43340b32e73077abf26e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -106,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nightmareMan: {fileID: 0}
+  playerMoveState: 0
 --- !u!135 &13588168
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -117,19 +117,6 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: .600000024
-  m_Center: {x: 0, y: .800000012, z: 0}
---- !u!136 &13659998
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186786}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .5
-  m_Height: 1.60000002
-  m_Direction: 1
   m_Center: {x: 0, y: .800000012, z: 0}
 --- !u!137 &13794614
 SkinnedMeshRenderer:
