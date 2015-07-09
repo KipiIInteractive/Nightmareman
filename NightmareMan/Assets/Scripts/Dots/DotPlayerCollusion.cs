@@ -5,7 +5,7 @@ public class DotPlayerCollusion : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Player") {
-			// TODO alert the score manager
+			GameScoreManager.Instance.EatFoodDot();			
 			Destroy(gameObject);
 		}
 	}

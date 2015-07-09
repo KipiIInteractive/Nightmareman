@@ -40,6 +40,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  displayScoreText: {fileID: 0}
+  foodReward: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
