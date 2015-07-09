@@ -13,5 +13,4 @@ public class SpawnEnemyManager : MonoBehaviour {
 			Instance = this;
 		}
 	}
-	
 }

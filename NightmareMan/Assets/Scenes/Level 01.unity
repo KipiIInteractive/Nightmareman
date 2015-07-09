@@ -554,7 +554,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 455110, guid: 38b78365fdaeb604dbed0c8c95fefedc, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2003308, guid: 38b78365fdaeb604dbed0c8c95fefedc, type: 2}
       propertyPath: orthographic

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpawnPlayerManager : MonoBehaviour {
-
+public class SpawnDotManager : MonoBehaviour {
+	
 	public Transform spawnPoint;
-	public static SpawnPlayerManager Instance;
-
+	public static SpawnDotManager Instance;
+	
 	void Start() {
 		if (Instance != null) {
 			Destroy(gameObject);
@@ -14,3 +14,4 @@ public class SpawnPlayerManager : MonoBehaviour {
 		}
 	}
 }
+

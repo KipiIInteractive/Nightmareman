@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 489922}
   - 114: {fileID: 11434132}
   - 114: {fileID: 11401230}
+  - 114: {fileID: 11433152}
+  - 114: {fileID: 11408668}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -38,6 +40,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8643b887d4e27984e8d44125264751b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 492928, guid: 40d0569ee4d5fcd478caed759f831fd3, type: 2}
+--- !u!114 &11408668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b807e97f6acd804286baa33c0b5373a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 492928, guid: 40d0569ee4d5fcd478caed759f831fd3, type: 2}
+--- !u!114 &11433152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0d4037993bafa488cfab86c7cbce3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 492928, guid: 40d0569ee4d5fcd478caed759f831fd3, type: 2}
