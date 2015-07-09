@@ -44,6 +44,10 @@ MonoBehaviour:
   wall: {fileID: 136496, guid: c9034929b4ec3164cbfaefd3cd238cbc, type: 2}
   environment: {fileID: 129298, guid: fe21fba99f4294847b6dadeaf0600a65, type: 2}
   spawnPoint: {fileID: 105150, guid: 40d0569ee4d5fcd478caed759f831fd3, type: 2}
+  enemyScatterPoint: {fileID: 161496, guid: 4312f7d76d51719428e95557181a4658, type: 2}
+  teleportEnter: {fileID: 173038, guid: 65a7ca70b32ef08419e79ff29c877dbe, type: 2}
+  teleportExit: {fileID: 171032, guid: 00be925c16ab30a4b95bef2cb5d32ed2, type: 2}
+  enemyFollowDots: {fileID: 115494, guid: 636d08d3f3333944584f93b1af44393f, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

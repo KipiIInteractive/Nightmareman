@@ -13,4 +13,5 @@ public class SpawnPlayerManager : MonoBehaviour {
 			Instance = this;
 		}
 	}
+
 }

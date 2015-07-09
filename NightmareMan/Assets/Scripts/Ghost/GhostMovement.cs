@@ -2,8 +2,9 @@
 
 public class GhostMovement : MonoBehaviour
 {
-	public enum MovementStates { Chase, Run, RandomMove };
 	public Transform nightmareMan;
+	public Transform scatterPoint;
+	public enum MovementStates { Chase, Scatter, Frightened };
 	public MovementStates playerMoveState = MovementStates.Chase;
 
 	NavMeshAgent navigation;
@@ -19,9 +20,11 @@ public class GhostMovement : MonoBehaviour
 		case MovementStates.Chase:
 			navigation.SetDestination (nightmareMan.position);
 			break;
-		case MovementStates.Run: 
+		case MovementStates.Scatter: 
+			navigation.SetDestination (scatterPoint.position);
 			break;
-		case MovementStates.RandomMove:
+		case MovementStates.Frightened:
+
 			break;
 		}
 	}

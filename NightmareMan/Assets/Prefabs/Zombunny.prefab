@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nightmareMan: {fileID: 0}
+  scatterPoint: {fileID: 0}
   playerMoveState: 0
 --- !u!135 &13588168
 SphereCollider:

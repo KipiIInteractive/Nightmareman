@@ -8,6 +8,10 @@ public class LevelConstructorManager : MonoBehaviour {
 	public GameObject wall;
 	public GameObject environment;
 	public GameObject spawnPoint;
+	public GameObject enemyScatterPoint;
+	public GameObject teleportEnter;
+	public GameObject teleportExit;
+	public GameObject enemyFollowDots;
 
 	void Start() {
 		int[,] bitmap = ParseLevelTextAsset(fileLevel);
@@ -38,16 +42,28 @@ public class LevelConstructorManager : MonoBehaviour {
 			currentPosition.z = startingZ;
 			for (int k = 0; k < cols; k++) {
 				switch (bitmap [i, k]) {
-				case 1: 
+				case 1: // wall
 					CreateBlock (currentPosition, generatedEnvironment, wall);
 					break;
-				case 2:
+				case 2: // player spawn point
 					CreateBlock (currentPosition, generatedEnvironment, spawnPoint);
 					SpawnPlayerManager.Instance.spawnPoint = spawnPoint.transform;
 					break;
-				case 3:
+				case 3: // enemy spawn point
 					CreateBlock (currentPosition, generatedEnvironment, spawnPoint);
 					SpawnEnemyManager.Instance.spawnPoint = spawnPoint.transform;
+					break;
+				case 4: // for scatter
+					CreateBlock (currentPosition, generatedEnvironment, enemyScatterPoint);
+					break;
+				case 5: // teleport enter
+					CreateBlock (currentPosition, generatedEnvironment, teleportEnter);
+					break;
+				case 6: // teleport exit
+					CreateBlock (currentPosition, generatedEnvironment, teleportExit);
+					break;
+				case 7: // enemy follow dots
+					CreateBlock (currentPosition, generatedEnvironment, enemyFollowDots);
 					break;
 				}
 				currentPosition.z += cubeSize;
@@ -78,7 +94,6 @@ public class LevelConstructorManager : MonoBehaviour {
 	}
 
 	string [] SplitByLines(string text) {
-		Debug.Log (text);
 		return text.Split(new string[] { System.Environment.NewLine }, System.StringSplitOptions.None);
 	}
 
