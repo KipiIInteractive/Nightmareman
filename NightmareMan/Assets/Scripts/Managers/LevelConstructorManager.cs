@@ -15,11 +15,11 @@ public class LevelConstructorManager : MonoBehaviour {
 	public GameObject PlayerFood;
 
 	void Start() {
-		int[,] bitmap = ParseLevelTextAsset(fileLevel);
+		char[,] bitmap = ParseLevelTextAsset(fileLevel);
 		GenerateMap (bitmap);
 	}
 
-	void GenerateMap(int [,] bitmap){
+	void GenerateMap(char [,] bitmap){
 		int rows = bitmap.GetLength (0);
 		int cols = bitmap.GetLength (1);
 		
@@ -27,7 +27,8 @@ public class LevelConstructorManager : MonoBehaviour {
 		
 		GameObject generatedEnvironment = Instantiate (environment);
 		GameObject generatedField = Instantiate (field);
-		
+		field.isStatic = true;
+
 		SetParent (generatedEnvironment, generatedField);
 		
 		generatedField.transform.localScale = new Vector3 (rows, cols, 0);
@@ -38,35 +39,38 @@ public class LevelConstructorManager : MonoBehaviour {
 		
 		currentPosition.y = cubeSize / 2;
 		float startingZ = currentPosition.z;
-		
+
+		GameObject staticObjects = new GameObject("ImmutableObjects");
+		SetParent (generatedEnvironment, staticObjects);
+
 		for (int i = 0; i < rows; i++) {
 			currentPosition.z = startingZ;
 			for (int k = 0; k < cols; k++) {
 				switch (bitmap [i, k]) {
-				case 0:
-					CreateBlock (currentPosition, generatedEnvironment, PlayerFood);
+				case '0':
+					CreateBlock (currentPosition, staticObjects, PlayerFood);
 					break;
-				case 1: // wall
-					CreateBlock (currentPosition, generatedEnvironment, wall);
+				case '1': // wall
+					CreateBlock (currentPosition, staticObjects, wall, true);
 					break;
-				case 2: // player spawn point
+				case '2': // player spawn point
 					CreateBlock (currentPosition, generatedEnvironment, spawnPoint);
 					SpawnPlayerManager.Instance.spawnPoint = spawnPoint.transform;
 					break;
-				case 3: // enemy spawn point
+				case '3': // enemy spawn point
 					CreateBlock (currentPosition, generatedEnvironment, spawnPoint);
 					SpawnEnemyManager.Instance.spawnPoint = spawnPoint.transform;
 					break;
-				case 4: // for scatter
+				case '4': // for scatter
 					CreateBlock (currentPosition, generatedEnvironment, enemyScatterPoint);
 					break;
-				case 5: // teleport enter
+				case '5': // teleport enter
 					CreateBlock (currentPosition, generatedEnvironment, teleportEnter);
 					break;
-				case 6: // teleport exit
+				case '6': // teleport exit
 					CreateBlock (currentPosition, generatedEnvironment, teleportExit);
 					break;
-				case 7: // enemy follow dots
+				case '7': // enemy follow dots
 					CreateBlock (currentPosition, generatedEnvironment, enemyFollowDots);
 					break;
 				}
@@ -76,25 +80,30 @@ public class LevelConstructorManager : MonoBehaviour {
 		}
 	}
 
-	int[,] ParseLevelTextAsset(TextAsset file) {
+	char[,] ParseLevelTextAsset(TextAsset file) {
 		string [] context = SplitByLines(file.text);
 
 		int rows = context.Length;
 		int cols = context[0].Length; 
 
-		int [,] levelBitmap = new int[rows, cols];
+		char [,] levelBitmap = new char[rows, cols];
 		for (int i = 0; i < rows; i++) {
 			for(int k = 0; k < cols; k++) {
-				levelBitmap[i, k] = (int) System.Char.GetNumericValue(context[i][k]);
+				levelBitmap[i, k] = context[i][k];
 			}
 		}
 
 		return levelBitmap;
 	}
 
-	void CreateBlock(Vector3 currentPosition, GameObject generatedEnvironment, GameObject prefab) {
-		GameObject newObject = Instantiate (prefab, currentPosition, wall.transform.rotation) as GameObject;
-		SetParent (generatedEnvironment, newObject);
+	GameObject CreateBlock(Vector3 position, GameObject environment, GameObject prefab, 
+	                 bool isStatic = false, string objectTag = "Untagged") 
+	{
+		GameObject newObject = Instantiate (prefab, position, wall.transform.rotation) as GameObject;
+		newObject.tag = objectTag;
+		newObject.isStatic = isStatic;
+		SetParent (environment, newObject);
+		return newObject;
 	}
 
 	string [] SplitByLines(string text) {

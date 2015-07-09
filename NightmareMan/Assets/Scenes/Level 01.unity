@@ -86,7 +86,7 @@ NavMeshSettings:
     minRegionArea: 2
     cellSize: .0666666701
     manualCellSize: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: a81e29dd3241eb54eadbcff50f35f27a, type: 2}
 --- !u!114 &76648530
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11473864, guid: 19c9b3c9365e7ec4795e751370f94d24,
@@ -270,11 +270,11 @@ Prefab:
     - target: {fileID: 11442662, guid: 20a1e34ec62907240b17b230f5d1ff4f, type: 2}
       propertyPath: otherTeleportPoint
       value: 
-      objectReference: {fileID: 1473914367}
+      objectReference: {fileID: 0}
     - target: {fileID: 11434306, guid: 20a1e34ec62907240b17b230f5d1ff4f, type: 2}
       propertyPath: otherTeleportPoint
       value: 
-      objectReference: {fileID: 699906978}
+      objectReference: {fileID: 0}
     - target: {fileID: 109170, guid: 20a1e34ec62907240b17b230f5d1ff4f, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -875,13 +875,13 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 180308, guid: 20a1e34ec62907240b17b230f5d1ff4f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20a1e34ec62907240b17b230f5d1ff4f, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &699906978
-Transform:
-  m_PrefabParentObject: {fileID: 434204, guid: 20a1e34ec62907240b17b230f5d1ff4f, type: 2}
-  m_PrefabInternal: {fileID: 658111293}
 --- !u!1001 &1082394399
 Prefab:
   m_ObjectHideFlags: 0
@@ -1064,10 +1064,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74dbceeaf3ba1a2408c7fa7115572837, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1473914367
-Transform:
-  m_PrefabParentObject: {fileID: 442210, guid: 20a1e34ec62907240b17b230f5d1ff4f, type: 2}
-  m_PrefabInternal: {fileID: 658111293}
 --- !u!4 &1484810203
 Transform:
   m_PrefabParentObject: {fileID: 492638, guid: 9fefbcfa25bf4894884757cc7f3cd152, type: 2}
