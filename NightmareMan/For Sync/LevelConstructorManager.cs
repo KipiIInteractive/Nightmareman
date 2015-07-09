@@ -7,6 +7,7 @@ public class LevelConstructorManager : MonoBehaviour {
 	public GameObject field; 
 	public GameObject wall;
 	public GameObject environment;
+	public GameObject spawnPoint;
 
 	void Start() {
 		int[,] bitmap = ParseLevelTextAsset(levelWalls);
@@ -38,7 +39,15 @@ public class LevelConstructorManager : MonoBehaviour {
 			for (int k = 0; k < cols; k++) {
 				switch (bitmap [i, k]) {
 				case 1: 
-					CreateNewWall (currentPosition, generatedEnvironment);
+					CreateBlock (currentPosition, generatedEnvironment, wall);
+					break;
+				case 2:
+					CreateBlock (currentPosition, generatedEnvironment, spawnPoint);
+					SpawnPlayerManager.Instance.spawnPoint = spawnPoint.transform;
+					break;
+				case 3:
+					CreateBlock (currentPosition, generatedEnvironment, spawnPoint);
+					SpawnEnemyManager.Instance.spawnPoint = spawnPoint.transform;
 					break;
 				}
 				currentPosition.z += cubeSize;
@@ -63,8 +72,8 @@ public class LevelConstructorManager : MonoBehaviour {
 		return levelBitmap;
 	}
 
-	void CreateNewWall(Vector3 currentPosition, GameObject generatedEnvironment) {
-		GameObject newObject = Instantiate (wall, currentPosition, wall.transform.rotation) as GameObject;
+	void CreateBlock(Vector3 currentPosition, GameObject generatedEnvironment, GameObject prefab) {
+		GameObject newObject = Instantiate (prefab, currentPosition, wall.transform.rotation) as GameObject;
 		SetParent (generatedEnvironment, newObject);
 	}
 
