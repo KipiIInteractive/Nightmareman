@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SingletonManager<T> : MonoBehaviour where T : SingletonManager<T> {
+public abstract class SingletonManager<T> : MonoBehaviour where T : SingletonManager<T> {
 
 	public static T Instance { get; private set; }
 
-	void Awake () {
+	protected void Awake () {
 		if (Instance != null) {
 			Destroy (gameObject);
 		} else {
