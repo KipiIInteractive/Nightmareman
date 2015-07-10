@@ -6,7 +6,11 @@ public class GameScoreManager : SingletonManager<GameScoreManager> {
 
 	public int score = 0;
 	public Text displayScoreText;
-	public int foodReward = 10;
+	public int dotReward = 10;
+	public int pelletReward = 50;
+	public int cherryReward = 100;
+	public int strawberryReward = 300;
+	
 
 	int oldScore = 0;
 
@@ -19,6 +23,19 @@ public class GameScoreManager : SingletonManager<GameScoreManager> {
 	}
 
 	public void EatFoodDot() {
-		score += foodReward;
+		score += dotReward;
 	}
+
+	public void EatFoodPellet() {
+		score += pelletReward;
+	}
+
+	public void EatFoodCherry() {
+		score += cherryReward;
+	}
+
+	public void EatFoodStrawberry() {
+		score += strawberryReward;
+	}
+
 }

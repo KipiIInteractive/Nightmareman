@@ -12,7 +12,12 @@ public class LevelConstructorManager : MonoBehaviour {
 	public GameObject teleportEnter;
 	public GameObject teleportExit;
 	public GameObject enemyFollowDots;
-	public GameObject playerFood;
+	public GameObject foodDot;
+	public GameObject foodPellet;
+	public GameObject foodCherry;
+	public GameObject foodStrawberry;
+	
+
 
 	void Start() {
 		char[,] bitmap = ParseLevelTextAsset(fileLevel);
@@ -47,8 +52,8 @@ public class LevelConstructorManager : MonoBehaviour {
 			currentPosition.z = startingZ;
 			for (int k = 0; k < cols; k++) {
 				switch (bitmap [i, k]) {
-				case '0':// player food points
-					CreateBlock (currentPosition, staticObjects, playerFood);
+				case '0':// player dot food points
+					CreateBlock (currentPosition, staticObjects, foodDot);
 					break;
 				case '1': // wall
 					CreateBlock (currentPosition, staticObjects, wall, true);
@@ -70,6 +75,15 @@ public class LevelConstructorManager : MonoBehaviour {
 					break;
 				case '7': // enemy follow dots
 					CreateBlock (currentPosition, generatedEnvironment, enemyFollowDots);
+					break;
+				case 'p':// player pellet food points
+					CreateBlock (currentPosition, staticObjects, foodPellet);
+					break;
+				case 'c':// player cherry food points
+					CreateBlock (currentPosition, staticObjects, foodCherry);
+					break;
+				case 's':// player Strawberry dot food points
+					CreateBlock (currentPosition, staticObjects, foodStrawberry);
 					break;
 				}
 				currentPosition.z += cubeSize;
