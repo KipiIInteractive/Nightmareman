@@ -9,6 +9,7 @@ TagManager:
   - EnemyMovementPoint
   - PlayerDead
   - SpawnPlayerPoint
+  - SpawnEnemyPoint
   layers:
   - Default
   - TransparentFX
