@@ -9,8 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 492928}
   m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: Untagged
+  m_Name: SpawnPlayerPoint
+  m_TagString: SpawnPlayerPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
