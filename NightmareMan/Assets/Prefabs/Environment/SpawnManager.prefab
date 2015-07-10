@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8643b887d4e27984e8d44125264751b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 492928, guid: 40d0569ee4d5fcd478caed759f831fd3, type: 2}
+  enemy: {fileID: 186786, guid: 3a60764a0c29e9e479c01af8d17ec40a, type: 2}
 --- !u!114 &11408668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566fb17d79c937242a5411e7c11d02bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 492928, guid: 40d0569ee4d5fcd478caed759f831fd3, type: 2}
+  player: {fileID: 163392, guid: 9fefbcfa25bf4894884757cc7f3cd152, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -55,11 +55,9 @@ public class LevelConstructorManager : MonoBehaviour {
 					break;
 				case '2': // player spawn point
 					CreateBlock (currentPosition, generatedEnvironment, spawnPoint, false, "SpawnPlayerPoint");
-					SpawnPlayerManager.Instance.spawnPoint = spawnPoint.transform;
 					break;
 				case '3': // enemy spawn point
 					CreateBlock (currentPosition, generatedEnvironment, spawnPoint, false, "SpawnEnemyPoint");
-					SpawnEnemyManager.Instance.spawnPoint = spawnPoint.transform;
 					break;
 				case '4': // for scatter
 					CreateBlock (currentPosition, generatedEnvironment, enemyScatterPoint, false, "EnemyMovementPoint");
