@@ -7,7 +7,7 @@ public class SpawnEnemyManager : SingletonManager<SpawnEnemyManager> {
 
 	Transform spawnPoint;
 
-	void Awake() {
+	new void Awake() {
 		base.Awake ();
 		spawnPoint = GameObject.FindGameObjectWithTag ("SpawnEnemyPoint").transform;
 		SpawnEnemy ();

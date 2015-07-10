@@ -1,36 +1,49 @@
 ﻿using UnityEngine;
 
-public class GhostMovement : MonoBehaviour
+public abstract class GhostMovement : MonoBehaviour
 {
-	public Transform nightmareMan;
 	public Transform scatterPoint;
 	public Transform chasePoint;
 	public enum MovementStates { Chase, Scatter, Frightened };
 	public MovementStates playerMoveState = MovementStates.Chase;
 
-	NavMeshAgent navigation;
+	protected NavMeshAgent navigation;
+	Animator anim;
 	
 	void Awake ()
 	{
 		navigation = GetComponent <NavMeshAgent> ();
+		anim = GetComponent<Animator> ();
 	}
 
 	void Start() {
 		chasePoint = EnemyMovementManager.Instance.GetRandomChasePoint ();
+		Chase ();
 	}
 	
-	void Update ()
+	void FixedUpdate ()
 	{
+		if (!GameStateManager.Instance.IsGameOver ()) {
+			MoveEnemy ();
+		} else {
+			navigation.enabled = false;
+			anim.SetBool ("Idle", true);
+		}
+	}
+
+	void MoveEnemy() {
 		switch (playerMoveState) {
 		case MovementStates.Chase:
-			navigation.SetDestination (chasePoint.position);
+			//Chase ();
 			break;
 		case MovementStates.Scatter: 
-			navigation.SetDestination (scatterPoint.position);
+			//navigation.SetDestination (scatterPoint.position);
 			break;
 		case MovementStates.Frightened:
-
+			//
 			break;
 		}
 	}
+
+	protected abstract void Chase();
 }

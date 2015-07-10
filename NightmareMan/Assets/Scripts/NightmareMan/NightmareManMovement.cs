@@ -19,26 +19,29 @@ public class NightmareManMovement : MonoBehaviour
 	void FixedUpdate() {
 		HandleMovementEvents ();
 
-		Move (h, v);
-		Animation (h, v);
+		Move ();
+		Animation ();
 		Turning ();
 	}
 	
-	void Move (float h, float v) {
+	void Move () {
 		movement.Set (h , 0f, v);
 		movement = movement.normalized * speed * Time.deltaTime;
 		nightmareManRigid.MovePosition(transform.position + movement);
 	}
 	
-	bool isWaking(float h, float v) {
+	bool IsWalking(float h, float v) {
 		return h != 0 || v != 0;
 	}
 	
-	void Animation (float h, float v) {
-		anim.SetBool ("IsWalking", isWaking(h, v) );
+	void Animation () {
+		anim.SetBool ("IsWalking", IsWalking(h, v) );
 	}
 	
 	void Turning() {
+		if(movement.Equals(Vector3.zero))
+		   return;
+
 		Quaternion rot = new Quaternion();
 		rot.SetLookRotation(movement);
 		transform.rotation = rot;
@@ -51,8 +54,8 @@ public class NightmareManMovement : MonoBehaviour
 		if (newH != 0) {
 			h = newH;
 			v = 0;
-		} else if(newV != 0) {
-			v =  newV;
+		} else if (newV != 0) {
+			v = newV;
 			h = 0;
 		}
 	}

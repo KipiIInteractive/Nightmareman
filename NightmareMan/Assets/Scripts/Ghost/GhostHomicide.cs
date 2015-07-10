@@ -1,35 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GhostHomicide : MonoBehaviour {
-	
-	GameObject nightmareMan;
-	NightmareManMovement nightmareManMovement;
-	Animator nightmareManAnim;
-	CapsuleCollider nightmareManCapsule;
+public class GhostHomicide : GhostMovement {
 
-	Animator GhostAnim;
+	Vector3 currentLocation = Vector3.zero;
 
-	void Awake()
-	{
-		GhostAnim = GetComponent<Animator> ();
+	protected override void Chase() {
+		Vector3 nextLocation;
+
+		do {
+			nextLocation = EnemyMovementManager.Instance.GetRandomChasePoint ().position;
+		} while( nextLocation.Equals(currentLocation) );
+
+		currentLocation = nextLocation;
+		navigation.SetDestination (currentLocation);
 	}
-	
-	void OnTriggerEnter (Collider other)
-	{
-		if(other.gameObject.tag == "Player")
-		{
-			nightmareMan = other.gameObject;
 
-			nightmareManMovement = nightmareMan.GetComponent<NightmareManMovement> ();
-			nightmareManAnim = nightmareMan.GetComponent<Animator> ();
-			nightmareManCapsule = nightmareMan.GetComponent<CapsuleCollider> ();
-			nightmareManMovement.enabled = false;
-			nightmareManCapsule.enabled = false;
-
-			nightmareMan.tag = "PlayerDead";
-			nightmareManAnim.SetTrigger ("Die");
-			GhostAnim.SetTrigger("NightmareManWinOrDie");
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.transform.position == currentLocation) {
+			Chase ();
 		}
 	}
+
 }

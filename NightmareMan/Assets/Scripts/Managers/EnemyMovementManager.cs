@@ -5,7 +5,7 @@ public class EnemyMovementManager : SingletonManager<EnemyMovementManager> {
 
 	public GameObject [] scatterPoints;
 
-	void Awake() {
+	new void Awake() {
 		base.Awake ();
 		scatterPoints = GameObject.FindGameObjectsWithTag ("EnemyMovementPoint");
 	}

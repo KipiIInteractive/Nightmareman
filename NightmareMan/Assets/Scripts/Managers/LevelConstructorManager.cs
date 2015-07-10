@@ -7,7 +7,8 @@ public class LevelConstructorManager : MonoBehaviour {
 	public GameObject field; 
 	public GameObject wall;
 	public GameObject environment;
-	public GameObject spawnPoint;
+	public GameObject spawnEnemyPoint;
+	public GameObject spawnPlayerPoint;
 	public GameObject enemyScatterPoint;
 	public GameObject teleportEnter;
 	public GameObject teleportExit;
@@ -19,7 +20,7 @@ public class LevelConstructorManager : MonoBehaviour {
 	
 
 
-	void Start() {
+	void Awake() {
 		char[,] bitmap = ParseLevelTextAsset(fileLevel);
 		GenerateMap (bitmap);
 	}
@@ -59,13 +60,13 @@ public class LevelConstructorManager : MonoBehaviour {
 					CreateBlock (currentPosition, staticObjects, wall, true);
 					break;
 				case '2': // player spawn point
-					CreateBlock (currentPosition, generatedEnvironment, spawnPoint, false, "SpawnPlayerPoint");
+					CreateBlock (currentPosition, generatedEnvironment, spawnPlayerPoint);
 					break;
 				case '3': // enemy spawn point
-					CreateBlock (currentPosition, generatedEnvironment, spawnPoint, false, "SpawnEnemyPoint");
+					CreateBlock (currentPosition, generatedEnvironment, spawnEnemyPoint);
 					break;
 				case '4': // for scatter
-					CreateBlock (currentPosition, generatedEnvironment, enemyScatterPoint, false, "EnemyMovementPoint");
+					CreateBlock (currentPosition, generatedEnvironment, enemyScatterPoint);
 					break;
 				case '5': // teleport enter
 					CreateBlock (currentPosition, generatedEnvironment, teleportEnter);
@@ -73,8 +74,9 @@ public class LevelConstructorManager : MonoBehaviour {
 				case '6': // teleport exit
 					CreateBlock (currentPosition, generatedEnvironment, teleportExit);
 					break;
-				case '7': // enemy follow dots
+				case '7': // enemy follow dots and dot food point
 					CreateBlock (currentPosition, generatedEnvironment, enemyFollowDots);
+					CreateBlock (currentPosition, staticObjects, foodDot);
 					break;
 				case 'p':// player pellet food points
 					CreateBlock (currentPosition, staticObjects, foodPellet);
@@ -108,13 +110,12 @@ public class LevelConstructorManager : MonoBehaviour {
 		return levelBitmap;
 	}
 
-	GameObject CreateBlock(Vector3 position, GameObject environment, GameObject prefab, 
-	                 bool isStatic = false, string objectTag = "Untagged") 
-	{
+	GameObject CreateBlock(Vector3 position, GameObject environment, GameObject prefab, bool isStatic = false) {
 		GameObject newObject = Instantiate (prefab, position, wall.transform.rotation) as GameObject;
-		newObject.tag = objectTag;
+
 		newObject.isStatic = isStatic;
 		SetParent (environment, newObject);
+
 		return newObject;
 	}
 

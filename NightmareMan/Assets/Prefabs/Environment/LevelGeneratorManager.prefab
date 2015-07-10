@@ -48,7 +48,10 @@ MonoBehaviour:
   teleportEnter: {fileID: 173038, guid: 65a7ca70b32ef08419e79ff29c877dbe, type: 2}
   teleportExit: {fileID: 171032, guid: 00be925c16ab30a4b95bef2cb5d32ed2, type: 2}
   enemyFollowDots: {fileID: 115494, guid: 636d08d3f3333944584f93b1af44393f, type: 2}
-  playerFood: {fileID: 125510, guid: ef2456ce53bb8b14ebe66951fda9f7d0, type: 2}
+  foodDot: {fileID: 125510, guid: 8782cebb3a3aae84aa09ab97bced681c, type: 2}
+  foodPellet: {fileID: 107822, guid: 32450045fa74fc044a7964d7b5c31815, type: 2}
+  foodCherry: {fileID: 180098, guid: 880ae235144eb824fa1e6d5484c23cc2, type: 2}
+  foodStrawberry: {fileID: 165070, guid: 8ee6daea2f30a31449ee5f4f19d1a4a3, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

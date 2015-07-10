@@ -13,6 +13,7 @@ GameObject:
   - 135: {fileID: 13588168}
   - 195: {fileID: 19525334}
   - 114: {fileID: 11449130}
+  - 114: {fileID: 11447306}
   m_Layer: 0
   m_Name: Zombunny
   m_TagString: Enemy
@@ -93,6 +94,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11447306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf44dca98711b9042abce033fd050afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11449130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,8 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41edbd1be734e144e9f90c5b1f9fa7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nightmareMan: {fileID: 0}
   scatterPoint: {fileID: 0}
+  chasePoint: {fileID: 0}
   playerMoveState: 0
 --- !u!135 &13588168
 SphereCollider:
