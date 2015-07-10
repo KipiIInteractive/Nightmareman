@@ -12,7 +12,7 @@ public class LevelConstructorManager : MonoBehaviour {
 	public GameObject teleportEnter;
 	public GameObject teleportExit;
 	public GameObject enemyFollowDots;
-	public GameObject PlayerFood;
+	public GameObject playerFood;
 
 	void Start() {
 		char[,] bitmap = ParseLevelTextAsset(fileLevel);
@@ -47,8 +47,8 @@ public class LevelConstructorManager : MonoBehaviour {
 			currentPosition.z = startingZ;
 			for (int k = 0; k < cols; k++) {
 				switch (bitmap [i, k]) {
-				case '0':
-					CreateBlock (currentPosition, staticObjects, PlayerFood);
+				case '0':// player food points
+					CreateBlock (currentPosition, staticObjects, playerFood);
 					break;
 				case '1': // wall
 					CreateBlock (currentPosition, staticObjects, wall, true);
@@ -62,7 +62,7 @@ public class LevelConstructorManager : MonoBehaviour {
 					SpawnEnemyManager.Instance.spawnPoint = spawnPoint.transform;
 					break;
 				case '4': // for scatter
-					CreateBlock (currentPosition, generatedEnvironment, enemyScatterPoint);
+					CreateBlock (currentPosition, generatedEnvironment, enemyScatterPoint, false, "EnemyMovementPoint");
 					break;
 				case '5': // teleport enter
 					CreateBlock (currentPosition, generatedEnvironment, teleportEnter);

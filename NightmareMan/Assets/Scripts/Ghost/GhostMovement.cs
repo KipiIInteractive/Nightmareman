@@ -4,6 +4,7 @@ public class GhostMovement : MonoBehaviour
 {
 	public Transform nightmareMan;
 	public Transform scatterPoint;
+	public Transform chasePoint;
 	public enum MovementStates { Chase, Scatter, Frightened };
 	public MovementStates playerMoveState = MovementStates.Chase;
 
@@ -13,13 +14,16 @@ public class GhostMovement : MonoBehaviour
 	{
 		navigation = GetComponent <NavMeshAgent> ();
 	}
+
+	void Start() {
+		chasePoint = EnemyMovementManager.Instance.GetRandomChasePoint ();
+	}
 	
 	void Update ()
 	{
 		switch (playerMoveState) {
 		case MovementStates.Chase:
-			// TODO must pick random chase point
-			//navigation.SetDestination (nightmareMan.position);
+			navigation.SetDestination (chasePoint.position);
 			break;
 		case MovementStates.Scatter: 
 			navigation.SetDestination (scatterPoint.position);
