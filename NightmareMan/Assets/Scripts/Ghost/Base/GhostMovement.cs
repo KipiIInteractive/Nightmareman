@@ -2,25 +2,25 @@
 
 public abstract class GhostMovement : MonoBehaviour
 {
-	public Transform scatterPoint;
-	public Transform chasePoint;
-	public enum MovementStates { Chase, Scatter, Frightened };
-	public MovementStates playerMoveState = MovementStates.Chase;
-
+	protected GameObject player;
 	protected NavMeshAgent navigation;
+	protected bool targetReached = true;
+	protected Transform target;
+	
 	Animator anim;
+	GameObject scatterPoint;
 	
 	void Awake ()
 	{
+		SetScatterPoint ();
 		navigation = GetComponent <NavMeshAgent> ();
 		anim = GetComponent<Animator> ();
 	}
 
 	void Start() {
-		chasePoint = EnemyMovementManager.Instance.GetRandomChasePoint ();
-		Chase ();
+		player = GameObject.FindGameObjectWithTag ("Player");
 	}
-	
+
 	void FixedUpdate ()
 	{
 		if (!GameStateManager.Instance.IsGameOver ()) {
@@ -32,16 +32,43 @@ public abstract class GhostMovement : MonoBehaviour
 	}
 
 	void MoveEnemy() {
-		switch (playerMoveState) {
-		case MovementStates.Chase:
-			//Chase ();
+		if (!targetReached)
+			return;
+
+		var state = EnemyMovementManager.Instance.enemyState;
+
+		switch (state) {
+		case EnemyMovementManager.MovementStates.Chase:
+			Chase ();
 			break;
-		case MovementStates.Scatter: 
-			//navigation.SetDestination (scatterPoint.position);
+		case EnemyMovementManager.MovementStates.Scatter: 
+			Scatter ();
 			break;
-		case MovementStates.Frightened:
-			//
+		case EnemyMovementManager.MovementStates.Frightened:
+			Frightened();
 			break;
+		}
+		targetReached = false;
+	}
+
+	void Scatter() {
+		target = EnemyMovementManager.Instance.FindConditionPath (target, scatterPoint);
+		navigation.SetDestination (target.transform.position);
+	}
+
+	void Frightened() {
+		target = EnemyMovementManager.Instance.FindConditionPath (target, player, false);
+		navigation.SetDestination (target.transform.position);
+	}
+
+	void SetScatterPoint() {
+		scatterPoint = GameObject.FindGameObjectWithTag ("ScatterPoint");
+		scatterPoint.tag = "Untagged";
+	}
+
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.transform == target) {
+			targetReached = true;
 		}
 	}
 

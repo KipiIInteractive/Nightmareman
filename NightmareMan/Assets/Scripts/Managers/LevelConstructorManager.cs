@@ -33,7 +33,6 @@ public class LevelConstructorManager : MonoBehaviour {
 		
 		GameObject generatedEnvironment = Instantiate (environment);
 		GameObject generatedField = Instantiate (field);
-		field.isStatic = true;
 
 		SetParent (generatedEnvironment, generatedField);
 		
@@ -57,7 +56,7 @@ public class LevelConstructorManager : MonoBehaviour {
 					CreateBlock (currentPosition, staticObjects, foodDot);
 					break;
 				case '1': // wall
-					CreateBlock (currentPosition, staticObjects, wall, true);
+					CreateBlock (currentPosition, staticObjects, wall);
 					break;
 				case '2': // player spawn point
 					CreateBlock (currentPosition, generatedEnvironment, spawnPlayerPoint);
@@ -110,10 +109,8 @@ public class LevelConstructorManager : MonoBehaviour {
 		return levelBitmap;
 	}
 
-	GameObject CreateBlock(Vector3 position, GameObject environment, GameObject prefab, bool isStatic = false) {
+	GameObject CreateBlock(Vector3 position, GameObject environment, GameObject prefab) {
 		GameObject newObject = Instantiate (prefab, position, wall.transform.rotation) as GameObject;
-
-		newObject.isStatic = isStatic;
 		SetParent (environment, newObject);
 
 		return newObject;
