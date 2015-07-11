@@ -2,8 +2,6 @@
 using System.Collections;
 
 public class NightmareHealth : MonoBehaviour {
-	public int lives = 2;
-
 	NightmareManMovement nightmareManMovement;
 	Animator nightmareManAnim;
 	CapsuleCollider nightmareManCapsule;
@@ -15,9 +13,9 @@ public class NightmareHealth : MonoBehaviour {
 	}
 
 	public void TakeDamage() {
-		lives -= 1;
+		GameLiveManager.Instance.TakeLive();
 
-		if (lives == 0) { 
+		if (GameLiveManager.Instance.PlayerDead()) { 
 			nightmareManAnim.SetTrigger ("Die");
 			GameStateManager.Instance.gameState = GameStateManager.States.Lose;
 

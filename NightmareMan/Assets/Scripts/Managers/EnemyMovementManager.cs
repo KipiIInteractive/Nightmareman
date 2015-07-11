@@ -1,15 +1,72 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class EnemyMovementManager : SingletonManager<EnemyMovementManager> {
 
 	public GameObject [] chasePoints;
 	public enum MovementStates { Chase, Scatter, Frightened };
-	public MovementStates enemyState = MovementStates.Chase;
-	
+	public MovementStates enemyState  = MovementStates.Chase;
+	public float scatterModeDuration  = 20;
+	public float chaseModeDuration    = 7;
+	public float frightenModeDuration = 5;
+
+	public Text displayMode;
+	MovementStates oldEnemyState;
+
+	float timer = 0;
+
 	new void Awake() {
 		base.Awake ();
 		chasePoints = GameObject.FindGameObjectsWithTag ("EnemyMovementPoint");
+	}
+
+	void Update() {
+		DisplayMode ();
+	}
+
+	void DisplayMode() {
+		if (oldEnemyState != enemyState) {
+			displayMode.text = "Mode : " + enemyState;
+			oldEnemyState = enemyState;
+		}
+	}
+
+	void FixedUpdate() {
+		if (FrigthenModeActive() || !timerEnded())
+			return;
+
+		switch (enemyState) {
+		case MovementStates.Chase:
+			enemyState = MovementStates.Scatter;
+			timer = scatterModeDuration;
+			break;
+		case MovementStates.Scatter:
+			enemyState = MovementStates.Chase;
+			timer = chaseModeDuration;
+			break;
+		}
+	}
+
+	bool timerEnded () {
+		return (timer -= Time.deltaTime) < 0;
+	}
+
+	public void StartFrigthenMode() {
+		StartCoroutine("FrigthenMode");
+	}
+
+	public bool FrigthenModeActive() {
+		return enemyState == MovementStates.Frightened;
+	}
+
+	IEnumerator FrigthenMode() {
+		MovementStates saveLastState = enemyState;
+		enemyState = MovementStates.Frightened;
+
+		yield return new WaitForSeconds (frightenModeDuration);
+
+		enemyState = saveLastState;
 	}
 
 	public Transform RandomChasePoint() {
@@ -25,7 +82,7 @@ public class EnemyMovementManager : SingletonManager<EnemyMovementManager> {
 				continue;
 
 			float currentIterationDist = Vector3.Distance(chasePoint.transform.position, target.transform.position);
-			if(shortestDistance > currentIterationDist == shortest) {
+			if((shortestDistance > currentIterationDist) == shortest) {
 				shortestPath = chasePoint.transform;
 				shortestDistance = currentIterationDist;
 			}

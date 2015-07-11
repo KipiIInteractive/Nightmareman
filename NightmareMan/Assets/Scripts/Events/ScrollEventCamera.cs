@@ -4,7 +4,7 @@ using System.Collections;
 public class ScrollEventCamera : MonoBehaviour {
 
 	public int minZoom = 4;
-	public int maxZoom = 11;
+	public int maxZoom = 15;
 
 	Camera mainCamera;
 
@@ -13,9 +13,9 @@ public class ScrollEventCamera : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (Input.GetAxis("Mouse ScrollWheel") > 0 && mainCamera.orthographicSize <= maxZoom) {
+		if (Input.GetAxis("Mouse ScrollWheel") < 0 && mainCamera.orthographicSize <= maxZoom) {
 			mainCamera.orthographicSize++;
-		} else if (Input.GetAxis("Mouse ScrollWheel") < 0 && mainCamera.orthographicSize >= minZoom) {
+		} else if (Input.GetAxis("Mouse ScrollWheel") > 0 && mainCamera.orthographicSize >= minZoom) {
 			mainCamera.orthographicSize--;
 		}
 	}

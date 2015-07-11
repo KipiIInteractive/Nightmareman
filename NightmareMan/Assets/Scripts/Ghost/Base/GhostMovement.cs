@@ -6,7 +6,8 @@ public abstract class GhostMovement : MonoBehaviour
 	protected NavMeshAgent navigation;
 	protected bool targetReached = true;
 	protected Transform target;
-	
+
+	EnemyMovementManager.MovementStates ghostState;
 	Animator anim;
 	GameObject scatterPoint;
 	
@@ -26,29 +27,36 @@ public abstract class GhostMovement : MonoBehaviour
 		if (!GameStateManager.Instance.IsGameOver ()) {
 			MoveEnemy ();
 		} else {
-			navigation.enabled = false;
+			DisableMovement();
 			anim.SetBool ("Idle", true);
 		}
 	}
 
 	void MoveEnemy() {
-		if (!targetReached)
+		if (!targetReached && !StateChanged())
 			return;
 
-		var state = EnemyMovementManager.Instance.enemyState;
+		ghostState = EnemyMovementManager.Instance.enemyState;
 
-		switch (state) {
-		case EnemyMovementManager.MovementStates.Chase:
-			Chase ();
-			break;
-		case EnemyMovementManager.MovementStates.Scatter: 
-			Scatter ();
-			break;
-		case EnemyMovementManager.MovementStates.Frightened:
-			Frightened();
-			break;
+		switch (ghostState) {
+		case EnemyMovementManager.MovementStates.Chase: 		Chase ();		break;
+		case EnemyMovementManager.MovementStates.Scatter: 		Scatter ();		break;
+		case EnemyMovementManager.MovementStates.Frightened:	Frightened();	break;
 		}
 		targetReached = false;
+	}
+
+	public void DisableMovement() {
+		navigation.enabled = false;
+	}
+
+	public void EnableMovement() {
+		navigation.enabled = true;
+		targetReached = true;
+	}
+
+	bool StateChanged() {
+		return ghostState != EnemyMovementManager.Instance.enemyState;
 	}
 
 	void Scatter() {

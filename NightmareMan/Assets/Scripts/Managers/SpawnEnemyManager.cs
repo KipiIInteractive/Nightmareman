@@ -17,4 +17,8 @@ public class SpawnEnemyManager : SingletonManager<SpawnEnemyManager> {
 		Instantiate (enemy, spawnPoint.position, enemy.transform.rotation);
 	}
 
+	public void Respawn(GameObject enemy) {
+		enemy.transform.position = spawnPoint.position;
+	}
+
 }
