@@ -18,8 +18,6 @@ public class LevelConstructorManager : MonoBehaviour {
 	public GameObject foodCherry;
 	public GameObject foodStrawberry;
 	
-
-
 	void Awake() {
 		char[,] bitmap = ParseLevelTextAsset(fileLevel);
 		GenerateMap (bitmap);

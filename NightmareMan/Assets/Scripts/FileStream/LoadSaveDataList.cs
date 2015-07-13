@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public static class LoadSaveDataList {
-	// saving data in list
+	// saving data in list, not working
 
 	public static void AddData<T>(T data, string fileName) {
 		List<T> dataList = LoadData<T> (fileName);
@@ -20,8 +20,15 @@ public static class LoadSaveDataList {
 		BinaryFormatter bf = new BinaryFormatter ();
 		string filePath = Application.persistentDataPath + fileName;
 		FileStream file = File.Exists (filePath) ? File.OpenRead (filePath) : File.Create (filePath);
-		List<T> dataList = (List<T>) bf.Deserialize (file);
-		file.Close();
-		return dataList;
+
+		// FORFIX: throwing exception when the lenght of file is 0
+		List<T> dataList = null;
+		try {
+		dataList = (List<T>) bf.Deserialize (file);
+		} catch (System.Runtime.Serialization.SerializationException) {
+		}
+
+		file.Close ();
+		return dataList ?? new List<T>();
 	}
 }

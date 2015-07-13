@@ -24,11 +24,12 @@ public abstract class GhostMovement : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		if (!GameStateManager.Instance.IsGameOver ()) {
-			MoveEnemy ();
-		} else {
-			DisableMovement();
-			anim.SetBool ("Idle", true);
+		switch (GameStateManager.Instance.gameState) {
+		case GameStateManager.States.Resume: 		SetInMovement();	break;
+		case GameStateManager.States.Pause:			SetInIdle();		break;
+		case GameStateManager.States.Lose:			SetInIdle();		break;
+		case GameStateManager.States.Win:			SetInIdle();		break;
+		default: 									MoveEnemy ();		break;
 		}
 	}
 
@@ -50,6 +51,16 @@ public abstract class GhostMovement : MonoBehaviour
 		navigation.enabled = false;
 	}
 
+	void SetInIdle() {
+		DisableMovement();
+		anim.SetBool ("Idle", true);
+	}
+
+	void SetInMovement() {
+		EnableMovement ();
+		anim.SetBool ("Idle", false);
+	}
+	
 	public void EnableMovement() {
 		navigation.enabled = true;
 		targetReached = true;

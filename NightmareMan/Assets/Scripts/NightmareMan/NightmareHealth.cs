@@ -8,8 +8,8 @@ public class NightmareHealth : MonoBehaviour {
 
 	void Awake() {
 		nightmareManMovement = GetComponent<NightmareManMovement> ();
-		nightmareManAnim = GetComponent<Animator> ();
-		nightmareManCapsule = GetComponent<CapsuleCollider> ();
+		nightmareManAnim 	 = GetComponent<Animator> ();
+		nightmareManCapsule  = GetComponent<CapsuleCollider> ();
 	}
 
 	public void TakeDamage() {

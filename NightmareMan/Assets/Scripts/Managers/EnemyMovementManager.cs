@@ -14,6 +14,10 @@ public class EnemyMovementManager : SingletonManager<EnemyMovementManager> {
 	public Text displayMode;
 	MovementStates oldEnemyState;
 
+	/* Frigthen mode help values */
+	int frigthenModeInProgress = 0;
+	MovementStates saveLastState;
+
 	float timer = 0;
 
 	new void Awake() {
@@ -33,6 +37,9 @@ public class EnemyMovementManager : SingletonManager<EnemyMovementManager> {
 	}
 
 	void FixedUpdate() {
+		if (GameStateManager.Instance.IsGamePaused())
+			return;
+
 		if (FrigthenModeActive() || !timerEnded())
 			return;
 
@@ -60,13 +67,18 @@ public class EnemyMovementManager : SingletonManager<EnemyMovementManager> {
 		return enemyState == MovementStates.Frightened;
 	}
 
+	// complicated function
 	IEnumerator FrigthenMode() {
-		MovementStates saveLastState = enemyState;
-		enemyState = MovementStates.Frightened;
+		if (frigthenModeInProgress++ == 0) {
+			saveLastState = enemyState;
+			enemyState = MovementStates.Frightened;
+		}
 
 		yield return new WaitForSeconds (frightenModeDuration);
 
-		enemyState = saveLastState;
+		if (--frigthenModeInProgress == 0) {
+			enemyState = saveLastState;
+		}
 	}
 
 	public Transform RandomChasePoint() {
