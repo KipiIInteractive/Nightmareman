@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11449774}
   m_Layer: 0
   m_Name: Pellet
-  m_TagString: Untagged
+  m_TagString: FoodPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
