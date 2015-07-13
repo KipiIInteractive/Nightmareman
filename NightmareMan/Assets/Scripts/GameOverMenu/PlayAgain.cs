@@ -3,6 +3,6 @@ using System.Collections;
 
 public class PlayAgain : MonoBehaviour {
 	public void PlayAgainLevel(){
-		Application.LoadLevel ("Level 01");
+		Application.LoadLevel (Application.loadedLevelName);
 	}
 }

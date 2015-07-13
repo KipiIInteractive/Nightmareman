@@ -19,6 +19,7 @@ public class WinLoseCanvas : MonoBehaviour {
 		if(GameStateManager.Instance.gameState == GameStateManager.States.Lose) {
 			anim.SetTrigger("GameOver");
 		}
+
 		if(GameStateManager.Instance.gameState == GameStateManager.States.Win) {
 			anim.SetTrigger("YouWin");
 		}
