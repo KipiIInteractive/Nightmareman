@@ -130,16 +130,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 497118, guid: f6368f6448f65524aa5d85c7e1df99bf, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11424868, guid: f6368f6448f65524aa5d85c7e1df99bf, type: 2}
       propertyPath: displayMode
       value: 
       objectReference: {fileID: 1888474806}
-    - target: {fileID: 11424868, guid: f6368f6448f65524aa5d85c7e1df99bf, type: 2}
-      propertyPath: frightenModeDuration
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6368f6448f65524aa5d85c7e1df99bf, type: 2}
   m_IsPrefabParent: 0

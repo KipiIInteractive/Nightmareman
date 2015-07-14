@@ -10,7 +10,7 @@ public abstract class GhostMovement : MonoBehaviour
 	EnemyMovementManager.MovementStates ghostState;
 	Animator anim;
 	GameObject scatterPoint;
-	
+
 	void Awake ()
 	{
 		SetScatterPoint ();
@@ -34,7 +34,7 @@ public abstract class GhostMovement : MonoBehaviour
 	}
 
 	void MoveEnemy() {
-		if (!targetReached && !StateChanged())
+		if (CanEnemyChangeState())
 			return;
 
 		ghostState = EnemyMovementManager.Instance.enemyState;
@@ -45,6 +45,10 @@ public abstract class GhostMovement : MonoBehaviour
 		case EnemyMovementManager.MovementStates.Frightened:	Frightened();	break;
 		}
 		targetReached = false;
+	}
+
+	bool CanEnemyChangeState() {
+		return (!targetReached && !StateChanged ()) || !navigation.enabled;
 	}
 
 	public void DisableMovement() {
