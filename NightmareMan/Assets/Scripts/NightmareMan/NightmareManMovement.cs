@@ -22,8 +22,9 @@ public class NightmareManMovement : MonoBehaviour
 		} else if (GameStateManager.Instance.IsGamePaused ()) {
 			anim.SetBool("IsWalking", false);
 			return;
-		} else if(GameStateManager.Instance.IsGameResumed() ) {
+		} else if(GameStateManager.Instance.IsGameAtResume() ) {
 			anim.SetBool("IsWalking", true);
+			return;
 		}
 
 		HandleMovementEvents ();

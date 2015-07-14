@@ -5,14 +5,7 @@ public class GameStateManager : SingletonManager<GameStateManager> {
 
 	public enum States { Pause, Start, Resume, Win, Lose }
 	public States gameState;
-
-	enum UpdatesFlags {
-		update 		= 1,
-		fixedUpdate = 1 << 1
-	}
-	UpdatesFlags passedUpdates;
-	UpdatesFlags allUpdates = UpdatesFlags.fixedUpdate |
-					 UpdatesFlags.update;
+	public float resumeTimeSeconds = 1f;
 
 	new void Awake() {
 		base.Awake ();
@@ -20,28 +13,25 @@ public class GameStateManager : SingletonManager<GameStateManager> {
 	}
 
 	void FixedUpdate() {
-		if (IsGameResumed ())
-			AfterAllUpdates (UpdatesFlags.fixedUpdate);
-
 		if (AllFoodCollected ())
 			gameState = States.Win;
 	}
 
 	void Update() {
-		if (IsGameResumed ())
-			AfterAllUpdates (UpdatesFlags.update);
-
-		if (!Input.GetKeyDown ("escape"))
+		if (!Input.GetKeyDown ("escape") || IsGameAtResume())
 			return;
 
-		passedUpdates = 0;
-		gameState = gameState == States.Pause ? States.Resume : States.Pause;
+		if (IsGamePaused ()) {
+			gameState = States.Resume;
+			Invoke ("ResumeGame", resumeTimeSeconds);
+		} else {
+			gameState = States.Pause;
+		}
 	}
 
-	void AfterAllUpdates(UpdatesFlags newFlag) {
-		passedUpdates |= newFlag;
-		if(passedUpdates == allUpdates)
-			gameState = States.Start;
+	void ResumeGame() {
+		Debug.Log ("Called");
+		gameState = States.Start;
 	}
 
 	void InitGameData() {
@@ -61,7 +51,7 @@ public class GameStateManager : SingletonManager<GameStateManager> {
 		return gameState == States.Pause;
 	}
 
-	public bool IsGameResumed() {
+	public bool IsGameAtResume() {
 		return gameState == States.Resume;
 	}
 }

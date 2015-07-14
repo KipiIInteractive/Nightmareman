@@ -7,7 +7,7 @@ public class PauseMenu : MonoBehaviour {
 	void FixedUpdate() {
 		if (GameStateManager.Instance.IsGamePaused() && !pauseMenuEnabled) {
 			DisplayChildren(true);
-		} else if (GameStateManager.Instance.IsGameResumed () && pauseMenuEnabled) {
+		} else if (GameStateManager.Instance.IsGameAtResume () && pauseMenuEnabled) {
 			DisplayChildren(false);
 		}
 	}
