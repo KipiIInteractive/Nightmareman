@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour {
 
 	public void TakeDamage() {
 		anim.SetTrigger ("Dead");
+		tag = "EnemyDead";
 		movement.DisableMovement ();
 		sphereCollider.enabled = false;
 		Invoke ("Respawn", 2f);
@@ -25,6 +26,7 @@ public class EnemyHealth : MonoBehaviour {
 		movement.EnableMovement ();
 		sphereCollider.enabled = true;
 		anim.SetTrigger ("Revive");
+		tag = "Enemy";
 	}
 
 }
