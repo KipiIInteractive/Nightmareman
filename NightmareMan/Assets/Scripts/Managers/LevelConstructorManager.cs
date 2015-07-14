@@ -17,6 +17,7 @@ public class LevelConstructorManager : MonoBehaviour {
 	public GameObject foodPellet;
 	public GameObject foodCherry;
 	public GameObject foodStrawberry;
+	public GameObject enemyBaseDoor;
 	
 	void Awake() {
 		char[,] bitmap = ParseLevelTextAsset(fileLevel);
@@ -83,6 +84,9 @@ public class LevelConstructorManager : MonoBehaviour {
 					break;
 				case 's':// player Strawberry dot food points
 					CreateBlock (currentPosition, staticObjects, foodStrawberry);
+					break;
+				case 'd':// enemy base door, player can't move through it
+					CreateBlock (currentPosition, staticObjects, enemyBaseDoor);
 					break;
 				}
 				currentPosition.z += cubeSize;

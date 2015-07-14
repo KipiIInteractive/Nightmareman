@@ -30,7 +30,6 @@ public class GameStateManager : SingletonManager<GameStateManager> {
 	}
 
 	void ResumeGame() {
-		Debug.Log ("Called");
 		gameState = States.Start;
 	}
 

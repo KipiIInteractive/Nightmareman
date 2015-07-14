@@ -7,7 +7,7 @@ public class Teleport : MonoBehaviour {
 	{
 		if(other.tag == "Player")
 		{
-			TeleportManager.Instance.TeleportObject(other.gameObject);
+			TeleportManager.Instance.EffectTeleportObject(other.gameObject);
 		}
 	}
 
