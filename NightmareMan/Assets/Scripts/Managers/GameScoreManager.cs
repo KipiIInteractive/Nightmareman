@@ -10,7 +10,7 @@ public class GameScoreManager : SingletonManager<GameScoreManager> {
 	public int pelletReward = 50;
 	public int cherryReward = 100;
 	public int strawberryReward = 300;
-	
+	public int zombieReward = 400;
 
 	int oldScore = 0;
 
@@ -36,6 +36,10 @@ public class GameScoreManager : SingletonManager<GameScoreManager> {
 
 	public void EatFoodStrawberry() {
 		score += strawberryReward;
+	}
+
+	public void EatZombie() {
+		score += zombieReward;
 	}
 
 }
