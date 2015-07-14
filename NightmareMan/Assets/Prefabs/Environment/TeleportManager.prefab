@@ -39,6 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7952ef2bbf2ed1d4b9b68c708cdda679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackHole: {fileID: 137026, guid: 6964403497ba8f24d845455a50aaf5b7, type: 2}
+  distFromFieldY: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

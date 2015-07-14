@@ -22,11 +22,15 @@ public class GameStateManager : SingletonManager<GameStateManager> {
 			return;
 
 		if (IsGamePaused ()) {
-			gameState = States.Resume;
-			Invoke ("ResumeGame", resumeTimeSeconds);
+			StartGame();
 		} else {
 			gameState = States.Pause;
 		}
+	}
+
+	public void StartGame() {
+		gameState = States.Resume;
+		Invoke ("ResumeGame", resumeTimeSeconds);
 	}
 
 	void ResumeGame() {

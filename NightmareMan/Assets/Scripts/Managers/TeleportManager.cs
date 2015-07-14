@@ -5,7 +5,7 @@ public class TeleportManager : SingletonManager<TeleportManager> {
 
 	/* Animated teleport vars */
 	public GameObject blackHole;
-	public float distFromFieldY = 100;
+	public float distFromFieldY = 10;
 	public const float blackHoleTimeSpan = 2f;
 
 

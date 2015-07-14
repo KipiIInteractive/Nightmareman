@@ -178,10 +178,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 11483218, guid: ecce5ac7b1f90744286568136512505e, type: 2}
-      propertyPath: blackHole
-      value: 
-      objectReference: {fileID: 137026, guid: 6964403497ba8f24d845455a50aaf5b7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ecce5ac7b1f90744286568136512505e, type: 2}
   m_IsPrefabParent: 0

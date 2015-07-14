@@ -23,6 +23,6 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void ResumeGame() {
-		GameStateManager.Instance.gameState = GameStateManager.States.Resume;
+		GameStateManager.Instance.StartGame ();
 	}
 }
