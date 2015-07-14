@@ -13,6 +13,7 @@ TagManager:
   - TeleportPoint
   - ScatterPoint
   - FoodPoint
+  - EnemyDead
   layers:
   - Default
   - TransparentFX
