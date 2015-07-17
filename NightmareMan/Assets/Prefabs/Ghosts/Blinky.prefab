@@ -11,10 +11,10 @@ GameObject:
   - 95: {fileID: 9522342}
   - 54: {fileID: 5492004}
   - 135: {fileID: 13561330}
-  - 195: {fileID: 19534798}
   - 114: {fileID: 11400148}
   - 114: {fileID: 11482964}
   - 114: {fileID: 11454384}
+  - 114: {fileID: 11444618}
   m_Layer: 0
   m_Name: Blinky
   m_TagString: Enemy
@@ -106,6 +106,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf44dca98711b9042abce033fd050afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11444618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13852fdbf79b5941b216f02d7400ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 136496, guid: c9034929b4ec3164cbfaefd3cd238cbc, type: 2}
+  movementSpeed: 4
 --- !u!114 &11454384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,26 +189,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -.753364205, y: .14181754, z: .084738791}
     m_Extent: {x: .927979112, y: .801833987, z: .540792048}
   m_DirtyAABB: 0
---- !u!195 &19534798
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172376}
-  m_Enabled: 1
-  m_Radius: .300000012
-  m_Speed: 3
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1.10000002
-  m_BaseOffset: 0
-  m_WalkableMask: 3
-  m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

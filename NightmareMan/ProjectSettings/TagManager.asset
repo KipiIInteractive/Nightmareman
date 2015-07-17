@@ -14,6 +14,7 @@ TagManager:
   - ScatterPoint
   - FoodPoint
   - EnemyDead
+  - Field
   layers:
   - Default
   - TransparentFX

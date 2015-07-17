@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelConstructorManager : MonoBehaviour {
+public class LevelConstructorManager : SingletonManager<LevelConstructorManager> {
 
 	public TextAsset  fileLevel;
 	public GameObject field; 
@@ -18,9 +18,12 @@ public class LevelConstructorManager : MonoBehaviour {
 	public GameObject foodCherry;
 	public GameObject foodStrawberry;
 	public GameObject enemyBaseDoor;
+	public char wallFlag = '1';
 	
-	void Awake() {
-		char[,] bitmap = ParseLevelTextAsset(fileLevel);
+	new void Awake() {
+		base.Awake ();
+		char[,] bitmap = ParseFunctions.ParseLevelTextAsset(fileLevel);
+		NavigationManager.Instance.SetMap (bitmap, wallFlag);
 		GenerateMap (bitmap);
 	}
 
@@ -95,31 +98,11 @@ public class LevelConstructorManager : MonoBehaviour {
 		}
 	}
 
-	char[,] ParseLevelTextAsset(TextAsset file) {
-		string [] context = SplitByLines(file.text);
-
-		int rows = context.Length;
-		int cols = context[0].Length; 
-
-		char [,] levelBitmap = new char[rows, cols];
-		for (int i = 0; i < rows; i++) {
-			for(int k = 0; k < cols; k++) {
-				levelBitmap[i, k] = context[i][k];
-			}
-		}
-
-		return levelBitmap;
-	}
-
 	GameObject CreateBlock(Vector3 position, GameObject environment, GameObject prefab) {
 		GameObject newObject = Instantiate (prefab, position, wall.transform.rotation) as GameObject;
 		SetParent (environment, newObject);
 
 		return newObject;
-	}
-
-	string [] SplitByLines(string text) {
-		return text.Split(new string[] { System.Environment.NewLine }, System.StringSplitOptions.None);
 	}
 
 	void SetParent(GameObject parent, GameObject child) {

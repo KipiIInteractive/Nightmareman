@@ -3,7 +3,7 @@
 public abstract class GhostMovement : MonoBehaviour
 {
 	protected GameObject player;
-	protected NavMeshAgent navigation;
+	protected PathFinder navigation;
 	protected bool targetReached = true;
 	protected Transform target;
 
@@ -14,7 +14,7 @@ public abstract class GhostMovement : MonoBehaviour
 	void Awake ()
 	{
 		SetScatterPoint ();
-		navigation = GetComponent <NavMeshAgent> ();
+		navigation = GetComponent <PathFinder> ();
 		anim = GetComponent<Animator> ();
 	}
 
@@ -48,7 +48,7 @@ public abstract class GhostMovement : MonoBehaviour
 	}
 
 	bool CanEnemyChangeState() {
-		return (!targetReached && !StateChanged ()) || !navigation.enabled;
+		return !targetReached && !StateChanged ();
 	}
 
 	public void DisableMovement() {
@@ -66,8 +66,8 @@ public abstract class GhostMovement : MonoBehaviour
 	}
 	
 	public void EnableMovement() {
-		navigation.enabled = true;
 		targetReached = true;
+		navigation.enabled = true;
 	}
 
 	bool StateChanged() {
@@ -76,12 +76,12 @@ public abstract class GhostMovement : MonoBehaviour
 
 	void Scatter() {
 		target = EnemyMovementManager.Instance.FindConditionPath (target, scatterPoint);
-		navigation.SetDestination (target.transform.position);
+		navigation.SetDestination (target.position);
 	}
 
 	void Frightened() {
 		target = EnemyMovementManager.Instance.FindConditionPath (target, player, false);
-		navigation.SetDestination (target.transform.position);
+		navigation.SetDestination (target.position);
 	}
 
 	void SetScatterPoint() {

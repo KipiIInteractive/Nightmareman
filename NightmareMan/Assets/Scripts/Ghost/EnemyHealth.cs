@@ -23,10 +23,10 @@ public class EnemyHealth : MonoBehaviour {
 
 	void Respawn() {
 		SpawnEnemyManager.Instance.Respawn (gameObject);
-		movement.EnableMovement ();
 		sphereCollider.enabled = true;
 		anim.SetTrigger ("Revive");
 		tag = "Enemy";
+		movement.EnableMovement ();
 	}
 
 }

@@ -11,10 +11,10 @@ GameObject:
   - 95: {fileID: 9575210}
   - 54: {fileID: 5484988}
   - 135: {fileID: 13545290}
-  - 195: {fileID: 19551104}
   - 114: {fileID: 11469894}
   - 114: {fileID: 11497022}
   - 114: {fileID: 11447440}
+  - 114: {fileID: 11415752}
   m_Layer: 0
   m_Name: Pinky
   m_TagString: Enemy
@@ -95,6 +95,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11415752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13852fdbf79b5941b216f02d7400ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 0}
+  movementSpeed: 4
 --- !u!114 &11447440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,26 +189,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -.753364205, y: .14181754, z: .084738791}
     m_Extent: {x: .927979112, y: .801833987, z: .540792048}
   m_DirtyAABB: 0
---- !u!195 &19551104
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101572}
-  m_Enabled: 1
-  m_Radius: .300000012
-  m_Speed: 3
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1.10000002
-  m_BaseOffset: 0
-  m_WalkableMask: 3
-  m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

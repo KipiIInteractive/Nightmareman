@@ -5,7 +5,7 @@ public class GhostHomicide : GhostMovement {
 
 	protected override void Chase() {
 		target = EnemyMovementManager.Instance.FindConditionPath (target, player);
-		navigation.SetDestination (target.transform.position);
+		navigation.SetDestination (target.position);
 	}
 
 }

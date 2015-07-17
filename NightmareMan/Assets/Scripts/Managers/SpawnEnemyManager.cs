@@ -11,7 +11,7 @@ public class SpawnEnemyManager : SingletonManager<SpawnEnemyManager> {
 	new void Awake() {
 		base.Awake ();
 		spawnPoint = GameObject.FindGameObjectWithTag ("SpawnEnemyPoint").transform;
-		for(int i = 0; i < enemy.Count; i++)
+		for(int i = 0; i < 4/*enemy.Count*/; i++)
 			StartCoroutine( InvokeSpawnEnemy(enemy[i], spawnIntervalSeconds*i) );
 	}
 
