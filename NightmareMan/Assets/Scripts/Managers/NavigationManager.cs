@@ -12,5 +12,4 @@ public class NavigationManager : SingletonManager<NavigationManager> {
 		wallFlag = passableArea;
 	}
 
-	
 }

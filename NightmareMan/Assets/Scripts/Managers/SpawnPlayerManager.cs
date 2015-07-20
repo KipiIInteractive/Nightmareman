@@ -6,8 +6,7 @@ public class SpawnPlayerManager : SingletonManager<SpawnPlayerManager> {
 	public GameObject player;
 	Transform spawnPoint;
 
-	new void Awake() {
-		base.Awake ();
+	void Awake() {
 		spawnPoint = GameObject.FindGameObjectWithTag ("SpawnPlayerPoint").transform;
 	}
 

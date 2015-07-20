@@ -20,8 +20,7 @@ public class EnemyMovementManager : SingletonManager<EnemyMovementManager> {
 
 	float timer = 0;
 
-	new void Awake() {
-		base.Awake ();
+	void Awake() {
 		chasePoints = GameObject.FindGameObjectsWithTag ("EnemyMovementPoint");
 	}
 

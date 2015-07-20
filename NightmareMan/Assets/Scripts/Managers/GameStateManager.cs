@@ -7,8 +7,7 @@ public class GameStateManager : SingletonManager<GameStateManager> {
 	public States gameState;
 	public float resumeTimeSeconds = 1f;
 
-	new void Awake() {
-		base.Awake ();
+	void Awake() {
 		InitGameData ();
 	}
 

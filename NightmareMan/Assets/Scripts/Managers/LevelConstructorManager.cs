@@ -20,8 +20,7 @@ public class LevelConstructorManager : SingletonManager<LevelConstructorManager>
 	public GameObject enemyBaseDoor;
 	public char wallFlag = '1';
 	
-	new void Awake() {
-		base.Awake ();
+	void Awake() {
 		char[,] bitmap = ParseFunctions.ParseLevelTextAsset(fileLevel);
 		NavigationManager.Instance.SetMap (bitmap, wallFlag);
 		GenerateMap (bitmap);
