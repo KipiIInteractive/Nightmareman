@@ -3,8 +3,8 @@ using System.Collections;
 
 public static class ParseFunctions {
 
-	public static char[,] ParseLevelTextAsset(TextAsset file) {
-		string [] context = SplitByLines(file.text);
+	public static char[,] ParseLevelString(string fileContent) {
+		string [] context = SplitByLines(fileContent);
 		
 		int rows = context.Length;
 		int cols = context[0].Length; 

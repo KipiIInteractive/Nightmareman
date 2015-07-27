@@ -8,6 +8,10 @@ public class GameStateManager : SingletonManager<GameStateManager> {
 	public float resumeTimeSeconds = 1f;
 
 	void Awake() {
+		LevelConstructorManager.Instance.LoadMap ();
+	}
+
+	void Start() {
 		InitGameData ();
 	}
 

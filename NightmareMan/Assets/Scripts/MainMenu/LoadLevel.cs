@@ -3,22 +3,13 @@ using System.Collections;
 
 public class LoadLevel : MonoBehaviour {
 
+	public GameObject mainMenuCanvas;
 	public GUISkin skins;
 	public Texture2D file,folder,back,drive;
 	
 	FileBrowser fb = new FileBrowser();
 	
 	void Start () {
-		InitFileBrowserSettings ();
-	}
-	
-	void OnGUI(){
-		if(fb.draw() && fb.outputFile != null){
-			Debug.Log (fb.outputFile.ToString());
-		}
-	}
-
-	void InitFileBrowserSettings() {
 		fb.guiSkin = skins;
 		fb.fileTexture = file; 
 		fb.directoryTexture = folder;
@@ -27,4 +18,22 @@ public class LoadLevel : MonoBehaviour {
 		fb.showSearch = true;
 		fb.searchRecursively = true;
 	}
+	
+	void OnGUI(){
+		if (fb.draw ()) {
+			if(fb.outputFile != null) {
+				LevelConstructorManager.Instance.fileLevelPath = fb.outputFile.ToString();
+			}
+			DisableFileBrowser();
+		}
+	}
+	
+	public void EnableFileBrowser() {
+		gameObject.SetActive (true);
+	}
+
+	public void DisableFileBrowser() {
+		gameObject.SetActive (false);
+	}
+	
 }

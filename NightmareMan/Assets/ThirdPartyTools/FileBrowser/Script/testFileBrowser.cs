@@ -6,6 +6,7 @@ public class testFileBrowser : MonoBehaviour {
 	public Texture2D file,folder,back,drive;
 	
 	FileBrowser fb = new FileBrowser();
+	bool draw = true;
 
 	void Start () {
 		fb.guiSkin = skins;
@@ -18,9 +19,17 @@ public class testFileBrowser : MonoBehaviour {
 	}
 	
 	void OnGUI(){
+		if (!draw)
+			return;
+
 		if(fb.draw() && fb.outputFile != null){
 			Debug.Log (fb.outputFile.ToString());
+			draw = false;
 		}
+	}
+
+	public void ToggleDraw() {
+		draw = !draw;
 	}
 
 }

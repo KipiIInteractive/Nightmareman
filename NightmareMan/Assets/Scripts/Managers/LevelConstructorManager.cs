@@ -3,7 +3,8 @@ using System.Collections;
 
 public class LevelConstructorManager : SingletonManager<LevelConstructorManager> {
 
-	public TextAsset  fileLevel;
+	public TextAsset  defaultLevelFile; 
+	public string     fileLevelPath;
 	public GameObject field; 
 	public GameObject wall;
 	public GameObject environment;
@@ -19,9 +20,16 @@ public class LevelConstructorManager : SingletonManager<LevelConstructorManager>
 	public GameObject foodStrawberry;
 	public GameObject enemyBaseDoor;
 	public char wallFlag = '1';
-	
+
 	void Awake() {
-		char[,] bitmap = ParseFunctions.ParseLevelTextAsset(fileLevel);
+		DontDestroyOnLoad (gameObject);
+	}
+
+	public void LoadMap() {
+		string fileContent = string.IsNullOrEmpty(fileLevelPath) ? defaultLevelFile.text : 
+																   System.IO.File.ReadAllText (fileLevelPath);
+
+		char[,] bitmap = ParseFunctions.ParseLevelString(fileContent);
 		NavigationManager.Instance.SetMap (bitmap, wallFlag);
 		GenerateMap (bitmap);
 	}
